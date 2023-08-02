@@ -1,0 +1,20 @@
+trigger:
+- adarsh
+
+pool:
+  vmImage: ubuntu-latest
+
+steps:
+- task: Docker@2
+  inputs:
+    containerRegistry: 'DockerConnection'
+    command: 'login'
+- task: Docker@2
+  inputs:
+    containerRegistry: 'DockerConnection'
+    repository: 'adarshmurali/dockerfrontend'
+    command: 'buildAndPush'
+    Dockerfile: '**/Dockerfile'
+
+
+
